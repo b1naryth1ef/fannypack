@@ -19,12 +19,12 @@ def setup_logging(app):
     logging.basicConfig(level=logging.DEBUG, format=FORMAT)
     set_logging_levels()
 
-    var_log_path = "/var/log/{}".format(app.logger_name)
+    var_log_path = "/var/log/{}".format(app)
 
     if os.path.exists(var_log_path):
         file_handler = logging.FileHandler(os.path.join(var_log_path, "flask.log"))
     else:
-        file_handler = logging.FileHandler('/tmp/{}-flask.log'.format(app.logger_name))
+        file_handler = logging.FileHandler('/tmp/{}-flask.log'.format(app))
 
     file_handler.setFormatter(logging.Formatter(FORMAT))
 
